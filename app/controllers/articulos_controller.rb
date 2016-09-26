@@ -40,7 +40,15 @@ class ArticulosController < ApplicationController
 	end
 	#PUT /articulos/:id
 	def update
-		
+		respond_to do |format|
+      if @articulos.update(articulo_params)
+        format.html { redirect_to @articulos, notice: 'Articulo was successfully updated.' }
+        format.json { render :show, status: :ok, location: @articulos}
+      else
+        format.html { render :edit }
+        format.json { render json: @articulos.errors, status: :unprocessable_entity }
+      end
+    end
 	end
 
 

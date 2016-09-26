@@ -1,7 +1,7 @@
 <h1>Bienvenido</h1>
 <h2>Articulos en el Post</h2>
 <% @articulos.each do |articulo| %>
-<h2><%= articulo.titulo %></h2>
+<h2><%= link_to articulo.titulo, articulo %> </h2>
 <div>
 	<%= articulo.body %> <%= link_to "Eliminar", articulo, method: :delete%>
 </div>
