@@ -5,6 +5,9 @@
 	</p>
 	
 <%end%>
+<div class="field">
+	<%= image_tag @articulos.cover.url(:thumb)%>
+</div>
 <p>
 	visitas: <%= @articulos.visits_count %>
 	</p>	

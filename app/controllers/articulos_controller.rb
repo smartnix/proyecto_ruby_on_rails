@@ -1,6 +1,6 @@
 class ArticulosController < ApplicationController
 	#before_action :validate_user, except: [:show,:index]
-	before_action :authenticate_user!, except: [:show]
+	before_action :authenticate_user!, except: [:show,:index]
 	before_action :set_articulos, except: [:index,:new,:create]
 	#GET /articulos
 	def index
@@ -53,7 +53,7 @@ class ArticulosController < ApplicationController
 	end
 
 	def articulo_params
-		params.require(:articulo).permit(:titulo,:body)
+		params.require(:articulo).permit(:titulo,:body,:cover)
 	end
 end
 
