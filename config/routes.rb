@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :categories
   resources :articulos do
   		 resources :comments, only: [:create, :destroy, :update, :show] 	
   end

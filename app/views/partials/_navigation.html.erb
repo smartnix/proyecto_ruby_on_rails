@@ -5,14 +5,15 @@
             <%= link_to "Inicio", root_path%>
           </li>
           <li class="col-md">
-            Diseño
-          </li>
-          <li class="col-md">
-            Programación
-          </li>
-          <li class="col-md">
-            Tecnologia
-          </li>
+            <%=link_to "Articulos", articulos_path%>
+           </li>
+
+           <% @categories.each do |category|%> 
+            <li class="col-md">
+              <%= link_to category.name,category %>
+            </li>
+           <%end%>
+
           <% if user_signed_in? %>
             <li class="col-md">
               <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete %>
