@@ -24,6 +24,7 @@ class ArticulosController < ApplicationController
 	def create
 		#@articulos = Articulo.new(titulo:params[:articulo][:titulo], body:params[:articulo][:body])
 		@articulos = current_user.articulos.new(articulo_params)
+		@articulos.categories = params[:categories]
 		if @articulos.save
 			redirect_to @articulos
 		else
@@ -61,7 +62,7 @@ class ArticulosController < ApplicationController
 	end
 
 	def articulo_params
-		params.require(:articulo).permit(:titulo,:body,:cover)
+		params.require(:articulo).permit(:titulo,:body,:cover,:categories)
 	end
 end
 
