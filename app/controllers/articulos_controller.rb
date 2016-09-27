@@ -3,10 +3,10 @@ class ArticulosController < ApplicationController
 	before_action :authenticate_user!, except: [:show,:index]
 	before_action :set_articulos, except: [:index,:new,:create]
 	before_action :authenticate_editor!, only: [:new,:create,:update]
-	before_action :authenticate_admin!, only: [:destroy]
+	before_action :authenticate_admin!, only: [:destroy,:publish]
 	#GET /articulos
 	def index
-	 @articulos = Articulo.all
+	 @articulos = Articulo.publicados.ultimos
 	end
 	#GET /articulos/:id
 	def show
@@ -52,6 +52,11 @@ class ArticulosController < ApplicationController
         format.json { render json: @articulos.errors, status: :unprocessable_entity }
       end
     end
+	end
+
+	def publish
+		@articulos.publish!
+		redirect_to @articulos
 	end
 
 

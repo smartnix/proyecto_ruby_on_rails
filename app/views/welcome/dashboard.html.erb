@@ -1,0 +1,15 @@
+<h2>Articulos en el Post</h2>
+<% @articulos.each do |articulo| %>
+<h2><%= link_to articulo.titulo, articulo %> </h2>
+<div>
+	<%= articulo.body %> - 
+	<%= link_to "Eliminar", articulo, class:"red", method: :delete%> - 
+
+	<% if articulo.may_publish? %>
+		<%= link_to "Publicar", "/articulos/#{articulo.id}/publish", class:"blue", method: :put %>
+	<% end -%>
+</div>
+<div>
+	visitas: <%= articulo.visits_count %>
+</div>
+<% end -%>

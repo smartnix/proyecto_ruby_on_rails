@@ -15,7 +15,16 @@ class Articulo < ApplicationRecord
 	has_attached_file :cover, styles: { medium: "1280x720", thumb: "800x600" , min:"400x300" }
 	validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
-	
+	#lamda
+	scope :publicados, ->{ where(state: "published")}
+
+	scope :ultimos, ->{ order("created_at DESC").limit(10)}
+
+	#hace lo mismo que la lamda
+	#def self.publicados
+	#	Articulos.where(state:"published")
+	#end
+
 	#custom setter atributo virtual
 	def categories= (value)
 		@categories = value
