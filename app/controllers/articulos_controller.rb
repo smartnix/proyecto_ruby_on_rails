@@ -6,7 +6,9 @@ class ArticulosController < ApplicationController
 	before_action :authenticate_admin!, only: [:destroy,:publish]
 	#GET /articulos
 	def index
-	 @articulos = Articulo.publicados.ultimos
+	 
+	 @articulos = Articulo.paginate(page: params[:page], per_page:5).publicados.ultimos
+	
 	end
 	#GET /articulos/:id
 	def show

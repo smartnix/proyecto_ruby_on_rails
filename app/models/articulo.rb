@@ -18,7 +18,7 @@ class Articulo < ApplicationRecord
 	#lamda
 	scope :publicados, ->{ where(state: "published")}
 
-	scope :ultimos, ->{ order("created_at DESC").limit(10)}
+	scope :ultimos, ->{ order("created_at DESC")}
 
 	#hace lo mismo que la lamda
 	#def self.publicados
