@@ -1,6 +1,8 @@
 class Articulo < ApplicationRecord
 	belongs_to :user
 	has_many :comments 
+	has_many :has_categories
+	has_many :categories, through: :has_categories
 	
 
 	validates :titulo, presence: true, uniqueness: true
@@ -11,8 +13,8 @@ class Articulo < ApplicationRecord
 	has_attached_file :cover, styles: { medium: "1280x720", thumb: "800x600" , min:"400x300" }
 	validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
-	#validates_attachment :cover, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-	#custom setter
+	
+	#custom setter atributo virtual
 	def categories= (value)
 		@categories = value
 	end
