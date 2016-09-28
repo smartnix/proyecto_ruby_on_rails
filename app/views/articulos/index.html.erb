@@ -1,14 +1,9 @@
-<h1>Bienvenido</h1>
-<h2>Articulos en el Post!</h2>
-<% @articulos.each do |articulo| %>
-<h2><%= link_to articulo.titulo, articulo %> </h2>
-<div>
-	<%= Sanitize.document(articulo.body, Sanitize::Config::RELAXED).html_safe %> 
-</div>
-<div>
-	visitas: <%= articulo.visits_count %>
-</div>
-<% end -%>
-<div>
-	<%= will_paginate @articulos %>
+<div class="container" style="margin:0 auto;">
+	<h1>Articulos en el Post!</h1>
+		<div class="row">
+			<%= render @articulos%>
+		</div>
+	<div class="top-space text-center">
+		<%= will_paginate @articulos %>
+	</div>
 </div>
