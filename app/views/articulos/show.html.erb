@@ -16,7 +16,7 @@
 <p>
 	visitas: <%= @articulos.visits_count %>
 	</p>	
-<div><%= @articulos.body.html_safe %></div>
+<div><%= Sanitize.document(@articulos.body, Sanitize::Config::RELAXED).html_safe %></div>
 <div>
 	
 </div>

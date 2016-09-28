@@ -3,7 +3,7 @@
 <% @articulos.each do |articulo| %>
 <h2><%= link_to articulo.titulo, articulo %> </h2>
 <div>
-	<%= articulo.body %> 
+	<%= Sanitize.document(articulo.body, Sanitize::Config::RELAXED).html_safe %> 
 </div>
 <div>
 	visitas: <%= articulo.visits_count %>
