@@ -30,6 +30,11 @@ a,a:visited{
 .be-red{
   background-color:#E74C3C;
 }
+
+.be-big{
+	font-size: 2em;
+}
+
 .white{
  color: white;
 }
@@ -68,6 +73,10 @@ a,a:visited{
 	background-size: cover;
 }
 
+.botton-space{
+	margin-bottom: 2em;
+}
+
 .text-center{
 	text-align: center;
 }
@@ -85,6 +94,22 @@ a,a:visited{
 .container{
 	width: 80%;
 	margin:0 auto;
+}
+
+.text-right{
+	text-align: right;
+}
+
+.be-small{
+	font-size: 12px;
+}
+
+.text-justify{
+	text-align: justify;
+}
+
+.grey{
+	color: #616161;
 }
 
 

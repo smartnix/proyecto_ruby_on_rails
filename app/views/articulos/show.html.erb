@@ -1,37 +1,24 @@
-<h1><%= @articulos.titulo %></h1>
-<% unless @articulos.user.nil? %>
-	<p>
-		Escrito por: <%= @articulos.user.email%>	
-	</p>
-	
-<%end%>
-<div class="field">
-	<% @articulos.categories.each do |category|%>
-		<%= link_to category.name, category, style:"color:#{category.color}"%>
-	<% end -%>
-</div>
-<div class="field">
-	<%= image_tag @articulos.cover.url(:thumb)%>
-</div>
-<p>
-	visitas: <%= @articulos.visits_count %>
-	</p>	
-<div><%= Sanitize.document(@articulos.body, Sanitize::Config::RELAXED).html_safe %></div>
-<div>
-	
-</div>
-<div>
-	<h3>Comentarios</h3>
-		<%= render "comments/form"%>				
-
-	<ul id="comments-box">
-		<% @articulos.comments.each do |comment| %>
-		<li>
-			<%= comment.body%> - <%= comment.user.email%>
-		</li>
-		<%end%>
-	</ul>
-</div>
-<div>
-	<%= link_to "Editar", edit_articulo_path(@articulos) %>
-</div>
+<articulos class="botton-space">
+	<div class="row center-xs"> 
+		<div class="col-xs-12 ligth-border col-md-7">
+		<h1 class="be-big blue">
+			<%= @articulos.titulo %>
+		</h1>
+		<p class="text-right be-small">
+			<%= link_to "Atras", articulos_path, class:"underline"%> - 
+			<span class="be-red"><%= @articulos.visits_count %> visitas(s) </span> - 
+			 - <% unless @articulos.user.nil? %>
+			 <p>
+				Escrito por: <%= @articulos.user.email%>
+			</p>
+			<%end%>
+		</p>
+		<div class="text-justify">
+			<%= Sanitize.document(@articulos.body, Sanitize::Config::RELAXED).html_safe %>
+		</div>	
+		<div>
+			<%= render "articulos/comments"%>
+		</div>
+		</div>
+	</div>
+</articulos>
