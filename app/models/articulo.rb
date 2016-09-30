@@ -11,6 +11,7 @@ class Articulo < ApplicationRecord
 	validates :body, presence: true, length: { minimum: 20 }
 	before_save :set_visits_count
 	after_create :save_categories
+	after_create :send_mail
 
 	has_attached_file :cover, styles: { medium: "1280x720", thumb: "800x600" , min:"400x300" }
 	validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
@@ -48,6 +49,9 @@ class Articulo < ApplicationRecord
 
 	private
 
+	def send_mail
+		ArticulosMailer.new_articulo(self).deliver_later
+	end
 	def save_categories
 		@categories.each do |category_id|
 			HasCategory.create(category_id: category_id,articulo_id: self.id)
